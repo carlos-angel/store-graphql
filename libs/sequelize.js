@@ -1,16 +1,21 @@
 const { Sequelize } = require('sequelize');
-const { db } = require('./../config');
+const { db, config } = require('./../config');
 const setupModels = require('./../db/models');
 
-const USER = encodeURIComponent(db.user);
-const PASSWORD = encodeURIComponent(db.password);
-
-let uri = `${db.dialect}://${USER}:${PASSWORD}@${db.host}:${db.port}/${db.name}`;
-
-const sequelize = new Sequelize(uri, {
+const options = {
   dialect: db.dialect,
-  logging: true,
-});
+  logging: config.isDev,
+};
+
+if (!config.isDev) {
+  options.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  };
+}
+
+const sequelize = new Sequelize(db.url, options);
 
 setupModels(sequelize);
 
