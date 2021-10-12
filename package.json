@@ -20,8 +20,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.1",
     "nodemon": "^2.0.12",
-    "prettier": "^2.3.2",
-    "sequelize-cli": "^6.2.0"
+    "prettier": "^2.3.2"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
@@ -32,7 +31,8 @@
     "joi": "^17.4.2",
     "mysql2": "^2.3.0",
     "pg": "^8.7.1",
-    "sequelize": "^6.7.0"
+    "sequelize": "^6.7.0",
+    "sequelize-cli": "^6.2.0"
   },
   "engines": {
     "node": "14.x"
