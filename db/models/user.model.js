@@ -1,4 +1,5 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 const USER_TABLE = 'users';
 
@@ -35,8 +36,8 @@ class User extends Model {
   static associate(models) {
     this.hasOne(models.Customer, {
       as: 'customer',
-      foreignKey: 'userId'
-    })
+      foreignKey: 'userId',
+    });
   }
 
   static config(sequelize) {
@@ -45,6 +46,12 @@ class User extends Model {
       tableName: USER_TABLE,
       modelName: 'User',
       timestamps: false,
+      hooks: {
+        beforeCreate: async (user, options) => {
+          const password = await bcrypt.hash(user.password, 10);
+          user.password = password;
+        },
+      }
     };
   }
 }
