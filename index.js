@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const passport = require('passport');
 const routerApi = require('./routes');
 
 const {
@@ -26,14 +27,10 @@ const options = {
 };
 app.use(cors(options));
 
-app.get('/', (req, res) => {
-  res.send('Hola mi server en express');
-});
+// use strategies
+require('./utils/auth');
 
-app.get('/nueva-ruta', (req, res) => {
-  res.send('Hola, soy una nueva ruta');
-});
-
+app.use(passport.initialize());
 routerApi(app);
 
 app.use(logErrors);
