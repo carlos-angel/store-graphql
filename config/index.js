@@ -11,4 +11,8 @@ const db = {
   dialect: process.env.DB_DIALECT,
 };
 
-module.exports = { config, db };
+const api = {
+  key: process.env.API_KEY
+}
+
+module.exports = { config, db, api };
