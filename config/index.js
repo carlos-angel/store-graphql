@@ -4,6 +4,7 @@ const config = {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
   isDev: process.env.NODE_ENV === 'development',
+  jwtSecret: process.env.JWT_SECRET,
 };
 
 const db = {
@@ -12,7 +13,7 @@ const db = {
 };
 
 const api = {
-  key: process.env.API_KEY
-}
+  key: process.env.API_KEY,
+};
 
 module.exports = { config, db, api };
