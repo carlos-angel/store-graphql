@@ -24,6 +24,11 @@ const UserSchema = {
     type: DataTypes.STRING,
     defaultValue: 'customer',
   },
+  recoveryToken: {
+    field: 'recovery_token',
+    allowNull: true,
+    type: Sequelize.DataTypes.STRING,
+  },
   createdAt: {
     allowNull: false,
     type: DataTypes.DATE,
@@ -51,7 +56,7 @@ class User extends Model {
           const password = await bcrypt.hash(user.password, 10);
           user.password = password;
         },
-      }
+      },
     };
   }
 }
