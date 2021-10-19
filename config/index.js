@@ -16,4 +16,12 @@ const api = {
   key: process.env.API_KEY,
 };
 
-module.exports = { config, db, api };
+const mail = {
+  host: process.env.HOST_MAIL,
+  port: process.env.PORT_MAIL,
+  user: process.env.USER_MAIL,
+  password: process.env.PASSWORD_MAIL,
+  jwtSecret: process.env.JWT_SECRET_MAIL,
+};
+
+module.exports = { config, db, api, mail };
