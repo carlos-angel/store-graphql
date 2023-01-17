@@ -3,6 +3,7 @@ require('dotenv').config();
 const config = {
   env: process.env.NODE_ENV,
   port: process.env.PORT,
+  isProd: process.env.NODE_ENV === 'production',
   isDev: process.env.NODE_ENV === 'development',
   jwtSecret: process.env.JWT_SECRET,
 };
